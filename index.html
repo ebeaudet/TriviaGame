@@ -19,9 +19,15 @@
             </h1>
             <div class="text-center">
                 <div id="timeRemaining"></div>
-                <div class="question"> Question goes here</div>
-                <div class="answers"> Answers go here</div>
-                <button btn btn id="start">Start Game</button>                
+                <div class="question"></div>
+                <div class="answerBlock">
+                <div><button class="answers" id="answer1"></button></div>
+                <div><button class="answers" id="answer2"></button></div>
+                <div><button class="answers" id="answer3"></button></div>
+                <div><button class="answers" id="answer4"></button></div>
+            </div>
+
+                <button btn btn id="start">Start Game</button>
             </div>
         </div>
     </div>
@@ -29,10 +35,17 @@
 </body>
 </html>
 
-<!-- var userChoice = $("<div>");
-    userChoice.addClass("answerchoice");
-    userChoice.html(pick.choice[i]);
-    //assign array position to it so can check answer
-    userChoice.attr("data-guessvalue", i);
-    $("#answerblock").append(userChoice); -->
-
+<!-- timer.reset();
+timer.start();
+$("#question").show();
+$(".answer-button").show();
+$("#question").text(questions[index].q);
+$("#a1").text(questions[index].a1);
+$("#a1").attr("data-text", questions[index].a1);
+$("#a2").text(questions[index].a2);
+$("#a2").attr("data-text", questions[index].a2);
+$("#a3").text(questions[index].a3);
+$("#a3").attr("dta-text", questions[index].a3);
+$("#a4").text(questions[index].a4);
+$("#a4").attr("data-text", questions[index].a4);
+}; -->
