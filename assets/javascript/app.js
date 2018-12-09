@@ -1,6 +1,7 @@
 $(document).ready()
-$(".answers").hide();
+    $(".answers").hide();
 {
+    
 
     //Game that will have 10 questions with 4 answers each, an image will be displayed after each question is answered 
     var questions = [
@@ -22,7 +23,7 @@ $(".answers").hide();
                 "Full Stack Developer",
                 "Nuclear Power Plant Safety Inspector"],
             correctAnswer: "Nuclear Power Plant Safety Inspector",
-            image: "assets/images/powerplant.png"
+            image: "assets/images/powerplant.gif"
         },
 
         {
@@ -52,7 +53,7 @@ $(".answers").hide();
                 "Duff's Place",
                 "The Drink Hole"],
             correctAnswer: "Moe's Tavern",
-            image: "assets/images/drunk.gif"
+            image: "assets/images/drunkgif.gif"
         },
 
         {
@@ -110,28 +111,27 @@ $(".answers").hide();
     var themeMusic = document.createElement("audio");
     var doh = document.createElement("audio");
     var woohoo = document.createElement("audio");
-    var correct;
-    var wrong;
+    var correct = 0;
+    var wrong = 0;
+    var missed = 0;
     var answerChosen;
     var countdown = 30;
-    var missed;
     var qIndex = 0;
-   
-
-    themeMusic.setAttribute("src", "assets/theme.mp3");
+    themeMusic.setAttribute("src", "assets/okly.mp3");
     doh.setAttribute("src", "assets/Doh.mp3");
     woohoo.setAttribute("src", "assets/woohoo.mp3");
+
     $("#start").on("click", function () {
-        themeMusic.play();
-        // startTime();
         displayQuestion();
+        themeMusic.play();
     })
 
     function displayQuestion() {
-        // startTime();
-        $(".answers").empty();
+        startTime();
+        $(".answerBlock").show();
         $("#start").hide();
         $(".answers").show();
+        $(".question").show();
         $(".question").text(questions[qIndex].question);
         $("#answer1").text(questions[qIndex].answers[0]);
         $("#answer1").attr("userGuess", questions[qIndex].answers[0]);
@@ -141,23 +141,57 @@ $(".answers").hide();
         $("#answer3").attr("userGuess", questions[qIndex].answers[2]);
         $("#answer4").text(questions[qIndex].answers[3]);
         $("#answer4").attr("userGuess", questions[qIndex].answers[3]);
- 
-    }
+    };
 
     $(".answers").on("click", function () {
         var guess = ($(this).attr("userGuess"));
-            if (guess === questions[qIndex].correctAnswer);
-            $(".question").hide();
+          stopTime();
+        if (guess === questions[qIndex].correctAnswer) {
+            correct++;
+            $(".answers").hide();
+            $(".question").html("WooHoo!" + "<br/></br/><img src='" + questions[qIndex].image + "'/>");
             woohoo.play();
-            $(".answerBlock").html("CORRECT!" + "<br/></br/><img src='" + questions[qIndex].image + "'/>");
-        console.log(guess);    
-    
-
+            setTimeout(nextQuestion, 5000);
+        } else {
+            wrong++;
+            $(".answers").hide();
+            $(".question").html("D'oh!! <br/> The Correct Answer was <br />" + (questions[qIndex].correctAnswer) + "<br/></br/><img src='" + questions[qIndex].image + "'/>");
+            doh.play();
+            setTimeout(nextQuestion, 5000);
+        }
     });
 
+    function nextQuestion() {
+        if (qIndex >= 9) {
+            console.log(qIndex, questions.lenght - 1);
+            $(".question").hide();
+            $("#score").append("<h2> Correct: " + correct + "</h2>");
+            $("#score").append("<h2> Incorrect: " + wrong + "</h2>");
+            $("#score").append("<h2> Questions Missed: " + missed + "</h2>");
+            var btnTryAgain = $("<button>");
+            btnTryAgain.html("Try Again");
+            btnTryAgain.addClass("tryAgain");
+            $(".answerBlock").append(btnTryAgain);
+        } else {
+            qIndex++;
+            displayQuestion();
+        }
+
+        $(btnTryAgain).on("click", function () {
+            $("#score").empty();
+            $("#score").hide();
+            btnTryAgain.hide();
+            correct = 0;
+            wrong = 0;
+            missed = 0;
+            qIndex = 0;
+            displayQuestion();
+        
+        });
+    }
+
     function startTime() {
-        intervalId = setInterval(decrement, 100);
-        //$("#timeRemaining").html("<h3>Time remaining: " + countdown + "</h3>");
+        intervalId = setInterval(decrement, 1000);
     }
 
     function decrement() {
@@ -166,10 +200,12 @@ $(".answers").hide();
 
         if (countdown === 0) {
             missed++;
+            $(".answerBlock").hide();
             $(".question").html("<p>Time's up! </p>"); 
-            $(".answerBlock").html("The Correct Answer was " + (questions[qIndex].correctAnswer) + "<br/></br/><img src='" + questions[qIndex].image + "'/>");
-             doh.play();
+            $(".question").append("The Correct Answer was <br />" + (questions[qIndex].correctAnswer) + "<br/></br/><img src='" + questions[qIndex].image + "'/>");
+            doh.play();
             stopTime();
+            setTimeout(nextQuestion, 5000);
         }
     }
 
@@ -177,5 +213,5 @@ $(".answers").hide();
         clearInterval(intervalId);
         countdown = 30;
     }
-
+  
 }

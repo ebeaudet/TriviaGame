@@ -7,45 +7,34 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/style.css" >
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Simpsons Trivia</title>
-    </head>
+</head>
 
 <body>
     <div class="container">
+        <h1 class="text-center">
+            <strong>Simpsons Trivia Game</strong>
+        </h1>
         <div class="jumbotron">
-            <h1 class="text-center">
-                <strong>Simpsons Trivia Game</strong>
-            </h1>
             <div class="text-center">
                 <div id="timeRemaining"></div>
                 <div class="question"></div>
                 <div class="answerBlock">
-                <div><button class="answers" id="answer1"></button></div>
-                <div><button class="answers" id="answer2"></button></div>
-                <div><button class="answers" id="answer3"></button></div>
-                <div><button class="answers" id="answer4"></button></div>
-            </div>
-
+                    <div id="score">
+                        <div><button class="answers btn btn-light " id="answer1"></button></div>
+                        <div><button class="answers btn btn-light" id="answer2"></button></div>
+                        <div><button class="answers btn btn-light" id="answer3"></button></div>
+                        <div><button class="answers btn btn-light" id="answer4"></button></div>
+                    </div>
+                </div>
                 <button btn btn id="start">Start Game</button>
             </div>
         </div>
     </div>
     <script type="text/javascript" src="./assets/javascript/app.js"></script>
-</body>
-</html>
 
-<!-- timer.reset();
-timer.start();
-$("#question").show();
-$(".answer-button").show();
-$("#question").text(questions[index].q);
-$("#a1").text(questions[index].a1);
-$("#a1").attr("data-text", questions[index].a1);
-$("#a2").text(questions[index].a2);
-$("#a2").attr("data-text", questions[index].a2);
-$("#a3").text(questions[index].a3);
-$("#a3").attr("dta-text", questions[index].a3);
-$("#a4").text(questions[index].a4);
-$("#a4").attr("data-text", questions[index].a4);
-}; -->
+</script>
+</body>
+
+</html>

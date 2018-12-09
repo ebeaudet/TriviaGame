@@ -14,8 +14,10 @@ body {
     background-size: contain;
     align-items: center;
     width: 600px;
-    height: 600px;
+    height: 500px;
     margin: auto;
+    margin-top:3em;
+    padding-top: 6.5em;
 }
 
 #questionsAnswers {
@@ -25,8 +27,8 @@ body {
 h1 {
     font-family: simpsonsFont;
     color: red;
-    font-size: 3.25em;
-    margin: .25em 0em 1em 0em;
+    font-size: 4em;
+
     
 }
  container {
@@ -35,13 +37,46 @@ h1 {
 
  .answerBox {
      background-color: rgb(74, 92, 131) ;
-     margin:1em;
- }
+      }
 
  .question {
     font-family: simpsonsFont;
     color: red;
     font-size: 1.50em;
-    margin: .25em 0em 1em 0em;
+    /* margin: .25em 0em 1em 0em; */
 
  }
+
+img{
+    height:250px;
+    width:250px;
+}
+
+button{
+    margin:1em;
+    width: 75%;
+    font-family: simpsonsFont;
+    color: blue;
+    font-size: 1em;
+
+}
+
+.btn-light, button {
+    color: #212529;
+    background-color: #7cc;
+    border-color: #5bc2c2
+}
+
+.btn-light:hover, button {
+    color: #212529;
+    background-color: #52bebe;
+    border-color: #8ad3d3
+}
+
+#timeRemaining {
+    font-family: simpsonsFont;
+    color: blue;
+    font-size: 1em;
+
+}
+
