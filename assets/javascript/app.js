@@ -131,6 +131,7 @@ $(document).ready()
         $(".answerBlock").show();
         $("#start").hide();
         $(".answers").show();
+        $("#score")
         $(".question").show();
         $(".question").text(questions[qIndex].question);
         $("#answer1").text(questions[qIndex].answers[0]);
